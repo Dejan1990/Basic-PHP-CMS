@@ -18,5 +18,7 @@
 
     <hr>
 
+    <?php get_message(); ?>
+
     <div>
     
