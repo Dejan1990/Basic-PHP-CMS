@@ -23,12 +23,12 @@ if( isset( $_GET['delete'] ) )
 
 }
 
-//$query = "SELECT * FROM users";
-//$result = mysqli_query($mysqli, $query);
-$query = 'SELECT *
+/*$query = 'SELECT *
   FROM users 
   '.( ( $_SESSION['id'] != 1 and $_SESSION['id'] != 4 ) ? 'WHERE id = '.$_SESSION['id'].' ' : '' ).'
-  ORDER BY last,first';
+  ORDER BY last,first';*/
+$query = "SELECT * FROM users";
+//$result = mysqli_query($mysqli, $query);
 $result = $mysqli->query($query);
 
 include( 'includes/header.php' );
@@ -50,7 +50,9 @@ include( 'includes/header.php' );
       <td align="center"><?php echo $record['id']; ?></td>
       <td align="left"><?php echo htmlentities( $record['first'] ); ?> <?php echo htmlentities( $record['last'] ); ?></td>
       <td align="left"><a href="mailto:<?php echo htmlentities( $record['email'] ); ?>"><?php echo htmlentities( $record['email'] ); ?></a></td>
-      <td align="center"><a href="#">Edit</a></td>
+      <td align="center">
+        <a href="users_edit.php?id=<?php echo $record['id']; ?>">Edit</a>
+      </td>
       <td align="center">
           <?php if ($_SESSION['id'] != $record['id']) : ?>
             <a onclick="return confirm('Are you sure you want to delete this user?')"      href="users.php?delete=<?php echo $record['id'] ?>"
