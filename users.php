@@ -6,8 +6,6 @@ include( 'includes/functions.php' );
 
 secure();
 
-
-
 if( isset( $_GET['delete'] ) )
 {
 
